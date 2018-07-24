@@ -10,6 +10,10 @@ chrome.runtime.onMessage.addListener(
         }
         if (request.message === "toggle") {
             running = !running
+            if(lastImage != null) {
+                lastImage.classList.remove("pulse");
+                lastImage = null;
+            }
             sendResponse({ type: "toggle", status: running })
         }
     }
