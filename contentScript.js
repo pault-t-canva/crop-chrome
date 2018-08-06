@@ -23,7 +23,7 @@ document.addEventListener("mouseup", setLastImage)
 
 function possibleImage(tag) {
     tag = tag.toLowerCase();
-    return tag === "img" || tag === "image" || tag === "polgon";
+    return tag === "img" || tag === "image" || tag === "polgon" || tag === "svg";
 }
 
 function setLastImage(e) {
@@ -85,10 +85,10 @@ function showCrop(resp) {
 
     var el = elementWithTransform(lastImage);
 
-    var xTransform = subPx(parent.style.transform.split(/\(|\)/)[1].split(",")[0].trim());
-    var yTransform = subPx(parent.style.transform.split(/\(|\)/)[1].split(",")[1].trim());
-    var width = subPx(parent.style.width);
-    var height = subPx(parent.style.height);
+    var xTransform = subPx(el.style.transform.split(/\(|\)/)[1].split(",")[0].trim());
+    var yTransform = subPx(el.style.transform.split(/\(|\)/)[1].split(",")[1].trim());
+    var width = subPx(el.style.width);
+    var height = subPx(el.style.height);
 
     navigator.clipboard.writeText(xTransform.toFixed(5) + "," + yTransform.toFixed(5) + "," + width.toFixed(5) + "," + height.toFixed(5))
         .then(() => {
