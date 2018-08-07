@@ -1,6 +1,6 @@
 {
   "name": "Content Canva Extension",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Extensions points for designers creating templates",
   "manifest_version": 2,
   "permissions": [
