@@ -91,11 +91,12 @@ function showCrop(resp) {
 
     var xTransform = subPx(el.style.transform.split(/\(|\)/)[1].split(",")[0].trim());
     var yTransform = subPx(el.style.transform.split(/\(|\)/)[1].split(",")[1].trim());
-    var rotation = subDeg(rotationElement.style.transform.split(/rotate\(/)[1].split(")")[0]);
+    var rotation = rotationElement != null ? subDeg(rotationElement.style.transform.split(/rotate\(/)[1].split(")")[0]) : 0.0;
     var width = subPx(el.style.width);
     var height = subPx(el.style.height);
 
-    navigator.clipboard.writeText(xTransform.toFixed(5) + "," + yTransform.toFixed(5) + "," + width.toFixed(5) + "," + height.toFixed(5) + "," + rotation.toFixed(5))
+    // top followed by left
+    navigator.clipboard.writeText(yTransform.toFixed(5) + "," + xTransform.toFixed(5) + "," + width.toFixed(5) + "," + height.toFixed(5) + "," + rotation.toFixed(5))
         .then(() => {
             resp({success: true})
         })
